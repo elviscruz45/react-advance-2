@@ -2,18 +2,27 @@ import React, {useEffect, useState} from "react"
 import {Category} from "../Category"
 import {List,Item} from "./styles"
 
-const ListOfCategories=()=>{
-    const [categories,setCategories]=useState([])
-    const [showFixed,setShowFixed]=useState(false)
 
+function useCategoriesData(){
+    const [categories,setCategories]=useState([])
+    const [loading,setLoading]=useState(false)
 
     useEffect(function(){
+        setLoading(true) // to start loading the fetch
         fetch("https://petgram-server-elviscruz45.vercel.app/categories")
         .then(res=>res.json())
         .then(data=>{
             setCategories(data)
+            setLoading(false) // when the calling end
         })
     },[])
+    return {categories,loading}
+}
+
+
+const ListOfCategories=()=>{
+    const {categories,loading}=useCategoriesData()
+    const [showFixed,setShowFixed]=useState(false)
 
     useEffect(function(){
         const onScroll=e=>{
@@ -26,15 +35,19 @@ const ListOfCategories=()=>{
     },[showFixed])
 
     const renderList=(fixed)=>(
-        <List className={fixed?"fixed":""}>
+        <List fixed={fixed}>
             {
-                categories.map(category=>
+                loading
+                ?<Item key="loading">Please,wait...<br/><br/><br/></Item>
+                :categories.map(category=>
                 <Item key={category.id}>
                     <Category {...category}/>
                 </Item>)
             }
         </List>
     )
+
+
 
     return(
         <>
@@ -45,5 +58,3 @@ const ListOfCategories=()=>{
 }
 
 export {ListOfCategories}
-
-
