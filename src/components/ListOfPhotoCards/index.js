@@ -2,9 +2,7 @@ import React from "react"
 import {PhotoCard} from "../PhotoCard"
 import { useGetPhotos } from "../../hoc/withPhotos";
 
-
-
-const ListOfPhotoCards = ({categoryId}) => {
+const ListOfPhotoCards = ({categoryId}={}) => {
     const { loading, error, data } = useGetPhotos(categoryId);
   
     if (error) {

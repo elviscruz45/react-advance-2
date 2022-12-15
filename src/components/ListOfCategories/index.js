@@ -41,7 +41,7 @@ const ListOfCategories=()=>{
                 ?<Item key="loading">Please,wait...<br/><br/><br/></Item>
                 :categories.map(category=>
                 <Item key={category.id}>
-                    <Category {...category}/>
+                    <Category {...category} path={`/pet/${category.id}`}/>
                 </Item>)
             }
         </List>
