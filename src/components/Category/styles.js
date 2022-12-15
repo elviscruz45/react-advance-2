@@ -1,6 +1,7 @@
 import styled from "styled-components"
+import {Link as linkRouter} from "react-router-dom"
 
-const Anchor=styled.a`
+const Link=styled(linkRouter)`
 display:flex;
 flex-direction: column;
 text-align: center;
@@ -19,4 +20,4 @@ height:75px;
 width:75px;
 `
 
-export {Anchor,Image}
+export {Link,Image}

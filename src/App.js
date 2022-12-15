@@ -1,29 +1,33 @@
 import React from "react"
 import {GlobalStyle} from "./styles/GlobalStyles"
 import {Logo} from "./components/Logo"
-import { PhotoCardWithQuery } from "./containers/PhotoCardWithQuery"
 import { Home } from "./pages/Home"
-import {Routes, Route} from "react-router-dom"
+import {Routes, Route,Navigate} from "react-router-dom"
+import { Detail } from "./pages/Detail"
+import { NavBar } from "./components/NavBar"
 
+import { Favs } from "./pages/Favs" 
+import { User } from "./pages/User"
+import { NotRegisteredUser } from "./pages/NotRegisteredUser"
 
-
-
+const userLogged=true;
 
 const App=()=>{
-    const urlParams=new window.URLSearchParams(window.location.search)
-    const detailId=urlParams.get("detail")
+
     return(
         <div>
         <GlobalStyle/>
         <Logo/>
-        {
-            detailId
-            ? <PhotoCardWithQuery id={detailId}/>
-            :<Routes>
-            <Route path="/" element={<Home/>}/>
-            <Route path="/pet/:id" element={<Home/>}/>
-            </Routes> 
-        }
+        <Routes>
+            <Route path="/" element={userLogged?<Home/>:<Navigate to='/login' />}/>
+            <Route path="/pet/:categoryId" element={<Home/>}/>
+            <Route path="/detail/:detailId" element={<Detail/>}/>
+            <Route path="/favs" element={userLogged?<Favs/>:<Navigate to='/login'/>}/>
+            <Route path="/user" element={<User/>}/>
+            <Route path='/login' element={<NotRegisteredUser />} />
+
+        </Routes>
+        <NavBar/>
         </div>
     )
 }

@@ -1,7 +1,9 @@
 import  React from "react"
 import {Svg} from "./styles"
+import {Link} from "react-router-dom"
 
 const Logo = (props) => (
+    <Link to="/">
   <Svg
     xmlns="http://www.w3.org/2000/svg"
     width={369.188}
@@ -32,6 +34,7 @@ const Logo = (props) => (
       transform="translate(122.124 96.985)"
     />
   </Svg>
+  </Link>
 )
 
 export {Logo}
