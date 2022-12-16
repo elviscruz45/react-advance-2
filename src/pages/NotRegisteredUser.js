@@ -1,7 +1,16 @@
-import React from "react"
+import React, {useContext} from "react"
+import { Context } from "../Context"
 
-const NotRegisteredUser=()=>(
-    <h1>NotRegisteredUser</h1>
-)
+const NotRegisteredUser=()=>{
+
+    const {activateAuth,isAuth}=useContext(Context)
+    return<>  
+    <form onSubmit={activateAuth}>
+        <button>
+            Iniciar Session
+        </button>
+    </form>
+    </>
+}
 
 export {NotRegisteredUser}
