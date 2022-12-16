@@ -1,15 +1,14 @@
 import React, {useContext} from "react"
 import { Context } from "../Context"
+import { FormLogin } from "../components/UserForm"
 
 const NotRegisteredUser=()=>{
 
     const {activateAuth,isAuth}=useContext(Context)
-    return<>  
-    <form onSubmit={activateAuth}>
-        <button>
-            Iniciar Session
-        </button>
-    </form>
+    return <>
+    <FormLogin title="Registrarse"/>
+    <FormLogin title="Iniciar Sesion"/>
+
     </>
 }
 
