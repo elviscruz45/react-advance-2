@@ -29,4 +29,8 @@ const Button = styled.button`
   padding: 8px 0;
 ` 
 
-export {Form,Input,Button,Title}
+const Error = styled.span`
+    color: red; 
+    font-size: 14px;`
+
+export {Form,Input,Button,Title,Error}
