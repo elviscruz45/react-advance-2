@@ -16,7 +16,10 @@ const FormLogin = ({title}) => {
   const onSubmit = ({ email, password }) => {
     const input = { email, password }
     const variables = { input }
-    registerMutation({ variables })  //.then(activateAuth)
+    registerMutation({ variables }).then((data)=>{
+        const {signup}=data.data
+        activateAuth(signup)
+    })  //.then(activateAuth)
 }
     const errorMsg = error && 'El usuario ya existe.'
 
@@ -25,7 +28,10 @@ const FormLogin = ({title}) => {
     const onLogin = ({ email, password }) => {
         const input = { email, password };
         const variable = { input };
-        loginMutation({ variables: variable }).then(activateAuth);
+        loginMutation({ variables: variable }).then((data)=>{
+            const {login}=data.data
+            activateAuth(login)
+        });
     };
     const errorMsgLogin = errorLogin && 'Ha ocurrido un error al iniciar sesión';
 
