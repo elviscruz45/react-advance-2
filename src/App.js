@@ -10,6 +10,7 @@ import { Favs } from "./pages/Favs"
 import { User } from "./pages/User"
 import { NotRegisteredUser } from "./pages/NotRegisteredUser"
 import { Context } from "./Context"
+import { NotFound } from "./pages/NotFound"
 
 const userLogged=true;
 const  urlParams = new window.URLSearchParams(window.location.search)
@@ -23,6 +24,7 @@ const App=()=>{
         <GlobalStyle/>
         <Logo/>
         <Routes>
+            <Route path="*" element={<NotFound/>}/>
             <Route path="/" element={<Home/>}/>
             <Route path="/pet/:categoryId" element={<Home/>}/>
             <Route path="/detail/:detailId" element={<Detail/>}/>
