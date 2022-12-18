@@ -17,9 +17,9 @@ const PhotoCard=({id,likes=0,src=DEFAULT_IMAGE})=>{
     const [show,element]=useNearScreen()
     const key=`like-${id}`
     const [liked,setLiked]=useLocalStorage(key,false)
-    const Icon=liked?MdFavorite:MdFavoriteBorder
     const [likePhoto, {data, loading, error}] = ToogleLikeMutation({liked,id,likes})
     const {mutation}=useMutationToggleLike()
+    const Icon=liked?MdFavorite:MdFavoriteBorder
 
 
     const handleFavClick=()=>{
