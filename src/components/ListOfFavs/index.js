@@ -1,5 +1,7 @@
 import React from 'react';
 import { Link, Grid, Image } from './styles';
+import PropTypes from "prop-types"
+import { MdListAlt } from 'react-icons/md';
 
 export const ListOfFavs = ({ favs = [] })=> {
     return (
@@ -12,5 +14,14 @@ export const ListOfFavs = ({ favs = [] })=> {
                 ))
             }
         </Grid>
+    )
+}
+
+ListOfFavs.propTypes={
+    favs:PropTypes.arrayOf(
+        PropTypes.shape({
+            id:PropTypes.string.isRequired,
+            src:PropTypes.string.isRequired
+        })
     )
 }
