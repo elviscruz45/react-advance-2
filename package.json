@@ -4,10 +4,14 @@
   "description": "**¡Sígueme en Youtube para más contenido de React y Javascript!** 👉 https://www.youtube.com/midudev",
   "main": "index.js",
   "scripts": {
-    "build": "webpack",
+    "build": "webpack --mode 'development'",
+    "start:dev": "npx serve build -s",
     "lint": "standard",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "webpack-dev-server --history-api-fallback"
+    "dev": "webpack-dev-server --history-api-fallback",
+    "serve2:dev": "npm run build && npm run start:dev",
+    "serve:dev": "webpack --mode 'development' && npx serve dist -s"
+
   },
   "repository": {
     "type": "git",
